@@ -3,150 +3,507 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>News Portal Layout</title>
+<title>প্রথম আলো - বাংলাদেশের শীর্ষস্থানীয় সংবাদ</title>
 <style>
- body{
- margin:0;
- font-family: Arial, Helvetica, sans-serif;
- background:#f5f5f5;
- color:#111;
- }
- .topbar{
- background:#ffffff;
- border-bottom:1px solid #ddd;
- padding:10px 20px;
- display:flex;
- align-items:center;
- justify-content:space-between;
- }
- .logo{
- font-size:34px;
- font-weight:bold;
- }
- .toplinks{
- font-size:14px;
- color:#555;
- }
- .navbar{
- background:#fff;
- padding:10px 20px;
- border-bottom:1px solid #ddd;
- display:flex;
- gap:20px;
- flex-wrap:wrap;
- }
- .navbar a{
- text-decoration:none;
- color:#000;
- font-weight:600;
- }
- .navbar a:hover{
- color:#e60000;
- }
- .banner{
- margin:15px auto;
- width:95%;
- height:120px;
- background:#d90000;
- color:white;
- display:flex;
- align-items:center;
- justify-content:center;
- font-size:24px;
- font-weight:bold;
- }
- .container{
- width:95%;
- margin:auto;
- display:grid;
- grid-template-columns: 1fr 2fr 1fr;
- gap:20px;
- }
- .card{
- background:#fff;
- padding:12px;
- border:1px solid #ddd;
- }
- .card h3{
- margin-top:0;
- font-size:18px;
- }
- .thumb{
- width:100%;
- height:150px;
- background:#ccc;
- margin:10px 0;
- }
- .footer{
- margin-top:30px;
- background:#111;
- color:white;
- text-align:center;
- padding:15px;
- }
- @media(max-width:900px){
- .container{
- grid-template-columns:1fr;
- }
- }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Serif Bengali', 'Kalpurush', Arial, sans-serif;
+  background: #f8f9fa;
+  color: #212529;
+  line-height: 1.6;
+}
+
+/* Topbar Styling */
+.topbar {
+  background: #ffffff;
+  border-bottom: 2px solid #e60000;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.logo {
+  font-size: 36px;
+  font-weight: 700;
+  color: #0c9134;
+  letter-spacing: -1px;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.toplinks {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.toplinks a {
+  text-decoration: none;
+  color: #666;
+  transition: color 0.3s;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.toplinks a:hover {
+  color: #0b8a35;
+  background: #f8f9fa;
+}
+
+/* Date & Time */
+.datetime {
+  font-size: 13px;
+  color: #888;
+  margin-top: 5px;
+}
+
+/* Navbar Styling */
+.navbar {
+  background: #fff;
+  padding: 15px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #212529;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.navbar a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: #370299;
+  transition: width 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #45019c;
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+/* Banner Styling */
+.banner {
+  margin: 20px auto;
+  width: 95%;
+  max-width: 1400px;
+  height: 120px;
+  background: linear-gradient(135deg, #e60000 0%, #c50000 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(230, 0, 0, 0.2);
+  transition: transform 0.3s;
+}
+
+.banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(230, 0, 0, 0.3);
+}
+
+/* Container Grid */
+.container {
+  width: 95%;
+  max-width: 1400px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 20px;
+}
+
+/* Card Styling */
+.card {
+  background: #fff;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.card:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
+  border-color: #e60000;
+}
+
+.card h3 {
+  margin: 0 0 12px 0;
+  font-size: 19px;
+  font-weight: 700;
+  color: #212529;
+  line-height: 1.4;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.card h3:hover {
+  color: #e60000;
+}
+
+.card p {
+  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+/* Thumbnail Styling */
+.thumb {
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(135deg, #e0e0e0 0%, #c0c0c0 100%);
+  margin: 12px 0;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.thumb:hover {
+  transform: scale(1.02);
+}
+
+.thumb::after {
+  content: '📷';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+  opacity: 0.3;
+}
+
+/* Category Badge */
+.category {
+  display: inline-block;
+  background: #e60000;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* Meta Info */
+.meta {
+  display: flex;
+  gap: 15px;
+  font-size: 13px;
+  color: #888;
+  margin-top: 10px;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Footer Styling */
+.footer {
+  margin-top: 40px;
+  background: #1a1a1a;
+  color: #ffffff;
+  padding: 30px 20px;
+}
+
+.footer-content {
+  width: 95%;
+  max-width: 1400px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.footer-section h4 {
+  color: #e60000;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin: 8px 0;
+}
+
+.footer-section ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #e60000;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid #333;
+  color: #888;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+  
+  .navbar {
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  .navbar a {
+    font-size: 14px;
+  }
+  
+  .logo {
+    font-size: 28px;
+  }
+  
+  .toplinks {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .banner {
+    height: 80px;
+    font-size: 18px;
+  }
+  
+  .card h3 {
+    font-size: 16px;
+  }
+  
+  .navbar {
+    padding: 10px;
+  }
+}
+
+/* Loading Animation */
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.loading {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(to right, #f0f0f0 0%, #e0e0e0 50%, #f0f0f0 100%);
+  background-size: 1000px 100%;
+}
 </style>
 </head>
 <body>
+
 <div class="topbar">
- <div class="logo">প্রথম আল ো</div>
- <div class="toplinks">Eng | Login | Search</div>
+  <div>
+    <div class="logo">প্রথম আলো</div>
+    <div class="datetime" id="datetime"></div>
+  </div>
+  <div class="toplinks">
+    <a href="#english">English</a>
+    <a href="#login">লগইন</a>
+    <a href="#search">🔍 খুঁজুন</a>
+  </div>
 </div>
-<div class="navbar">
- <a href="#">সর্ বলেষ</a>
- <a href="#">র্োাং োলেে</a>
- <a href="#">নির্ বোচি</a>
- <a href="#">নর্শ্ব</a>
- <a href="#">খে ো</a>
- <a href="#">নর্লিোেি</a>
- <a href="#">চোকনি</a>
- <a href="#">নিনিও</a>
-</div>
+
+<nav class="navbar">
+  <a href="#latest">সর্বশেষ</a>
+  <a href="#bangladesh">বাংলাদেশ</a>
+  <a href="#election">নির্বাচন</a>
+  <a href="#world">বিশ্ব</a>
+  <a href="#sports">খেলা</a>
+  <a href="#entertainment">বিনোদন</a>
+  <a href="#jobs">চাকরি</a>
+  <a href="#video">ভিডিও</a>
+</nav>
+
 <div class="banner">
- Advertisement Banner
+  🎯 বিজ্ঞাপন স্থান
 </div>
+
 <div class="container">
- <div>
- <div class="card">
- <h3>এক র্োন়িলে এে অস্ত্র খে েুন ে</h3>
- <div class="thumb"></div>
- <p>সাংনিপ্ত র্র্ বিো এেোলি থোকলর্।</p>
- </div>
- <div class="card">
- <h3>জোেীয় সাংসে নির্ বোচি ২০২৬</h3>
- <div class="thumb"></div>
- <p>আিও ের্ি ে়িুি।</p>
- </div>
- </div>
- <div>
- <div class="card">
- <h3>এক র্যক্তিি ‘েোে’ নেলে ১০ হোজোি নির্ বোচি ের্ বলর্িক</h3>
- <div class="thumb" style="height:200px;"></div>
- <p>মূ প্রনেলর্েলিি নকছুঅাংে এেোলি খেেো র্োলর্...</p>
- </div>
- <div class="card">
- <h3>সোলর্ক খপ্রনসলিলেি সফি</h3>
- <div class="thumb"></div>
- <p>সাংর্োে সোিোাংে।</p>
- </div>
- </div>
- <div>
- <div class="card">
- <h3>Advertisement</h3>
- <div class="thumb" style="height:250px;"></div>
- </div>
- <div class="card">
- <h3>মেোমে</h3>
- <p>নর্লেষ ক োম ও নর্লেষর্।</p>
- </div>
- </div>
+  <!-- Left Column -->
+  <div>
+    <div class="card">
+      <span class="category">বাংলাদেশ</span>
+      <h3>এক বাড়িতে এত অস্ত্র খুঁজে পেল পুলিশ</h3>
+      <div class="thumb"></div>
+      <p>রাজধানীর একটি বাড়িতে অভিযান চালিয়ে পুলিশ উদ্ধার করেছে প্রচুর পরিমাণ অবৈধ অস্ত্র ও গোলাবারুদ।</p>
+      <div class="meta">
+        <span>⏰ ২ ঘণ্টা আগে</span>
+        <span>👁 ১২৫০</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <span class="category">নির্বাচন</span>
+      <h3>জাতীয় সংসদ নির্বাচন ২০২৬</h3>
+      <div class="thumb"></div>
+      <p>আসন্ন জাতীয় সংসদ নির্বাচন নিয়ে প্রস্তুতি চলছে দেশজুড়ে।</p>
+      <div class="meta">
+        <span>⏰ ৪ ঘণ্টা আগে</span>
+        <span>👁 ৮৯০</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Middle Column (Main Content) -->
+  <div>
+    <div class="card">
+      <span class="category">শীর্ষ সংবাদ</span>
+      <h3>এক ব্যক্তির 'লাল' নিয়ে ১০ হাজার নির্বাচন কর্মকর্তার ভাবনা</h3>
+      <div class="thumb" style="height:300px;"></div>
+      <p>নির্বাচন কমিশনের প্রশিক্ষণ কর্মসূচিতে একটি অভিনব বিষয় নিয়ে আলোচনা হয়েছে। প্রশিক্ষকরা বলছেন, এই বিষয়টি নির্বাচনকে আরও স্বচ্ছ ও নিরপেক্ষ করতে সাহায্য করবে। প্রশিক্ষণে অংশ নেওয়া কর্মকর্তারা এই নতুন পদ্ধতি সম্পর্কে উৎসাহ প্রকাশ করেছেন।</p>
+      <div class="meta">
+        <span>⏰ ১ ঘণ্টা আগে</span>
+        <span>👁 ৩৪৫০</span>
+        <span>💬 ৪৫</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <span class="category">রাজনীতি</span>
+      <h3>সাবেক প্রেসিডেন্টের সফর শুরু</h3>
+      <div class="thumb"></div>
+      <p>দেশের বিভিন্ন অঞ্চলে জনসংযোগ সফরে বেরিয়েছেন সাবেক প্রেসিডেন্ট। তিন দিনের এই সফরে তিনি বিভিন্ন শ্রেণি-পেশার মানুষের সঙ্গে মতবিনিময় করবেন।</p>
+      <div class="meta">
+        <span>⏰ ৩ ঘণ্টা আগে</span>
+        <span>👁 ১৮৭০</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Column (Sidebar) -->
+  <div>
+    <div class="card">
+      <h3>📢 বিজ্ঞাপন</h3>
+      <div class="thumb" style="height:250px;"></div>
+    </div>
+    
+    <div class="card">
+      <span class="category">মতামত</span>
+      <h3>আজকের সম্পাদকীয়</h3>
+      <p>শিক্ষা ব্যবস্থায় সংস্কার: প্রয়োজন দীর্ঘমেয়াদি পরিকল্পনা ও বাস্তবায়ন।</p>
+      <div class="meta">
+        <span>⏰ ৫ ঘণ্টা আগে</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3>📊 জনপ্রিয় সংবাদ</h3>
+      <ul style="list-style: none; padding: 0;">
+        <li style="padding: 8px 0; border-bottom: 1px solid #eee;">
+          <a href="#" style="text-decoration: none; color: #212529;">১. ক্রিকেট দলের নতুন কোচ নিয়োগ</a>
+        </li>
+        <li style="padding: 8px 0; border-bottom: 1px solid #eee;">
+          <a href="#" style="text-decoration: none; color: #212529;">২. স্বর্ণের দাম আবারও বৃদ্ধি</a>
+        </li>
+        <li style="padding: 8px 0;">
+          <a href="#" style="text-decoration: none; color: #212529;">৩. আবহাওয়া পূর্বাভাস</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
-<div class="footer">
- © 2026 News Portal
-</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h4>সম্পর্কে</h4>
+      <ul>
+        <li><a href="#">আমাদের সম্পর্কে</a></li>
+        <li><a href="#">বিজ্ঞাপন</a></li>
+        <li><a href="#">যোগাযোগ</a></li>
+        <li><a href="#">গোপনীয়তা নীতি</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>সংবাদ বিভাগ</h4>
+      <ul>
+        <li><a href="#">বাংলাদেশ</a></li>
+        <li><a href="#">আন্তর্জাতিক</a></li>
+        <li><a href="#">খেলাধুলা</a></li>
+        <li><a href="#">বিনোদন</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>অনুসরণ করুন</h4>
+      <ul>
+        <li><a href="#">📘 Facebook</a></li>
+        <li><a href="#">🐦 Twitter</a></li>
+        <li><a href="#">📸 Instagram</a></li>
+        <li><a href="#">▶️ YouTube</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © ২০২৬ প্রথম আলো। সর্বস্বত্ব সংরক্ষিত।
+  </div>
+</footer>
+
+<script>
+// Date and Time Display
+function updateDateTime() {
+  const now = new Date();
+  const options = { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  };
+  document.getElementById('datetime').textContent = 
+    now.toLocaleDateString('bn-BD', options);
+}
+updateDateTime();
+setInterval(updateDateTime, 60000);
+</script>
+
 </body>
 </html>
